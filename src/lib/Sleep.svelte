@@ -9,7 +9,7 @@
   export let inputStyles;
   export let buttonStyles;
 
-  let isOpen = false;
+  let isOpen = true;
 
   let bag = 0;
   let pad = 0;
