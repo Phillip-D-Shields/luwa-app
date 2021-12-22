@@ -29,11 +29,11 @@
 
   // export let styles;
   $: chartData = [
+    $essentialsPercentage,
     $sleepPercentage,
     $eatDrinkPercentage,
     $clothingPercentage,
     $shelterPercentage,
-    $essentialsPercentage,
     $luxuriesPercentage,
   ];
 
