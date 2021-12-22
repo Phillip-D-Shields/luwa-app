@@ -1,1 +1,1 @@
-<h5 class="bottom">Copyright L. Watson && P. Shields 2021</h5>
+<h5 class="text-center pt-8 pb-2">Copyright L. Watson && P. Shields 2021</h5>

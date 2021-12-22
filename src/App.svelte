@@ -8,6 +8,8 @@
   import Footer from "./lib/Footer.svelte";
   // import Chart from "./lib/Chart.svelte";
   import { renderChart } from "./lib/renderChart";
+  import ItemInput from "./components/ItemInput.svelte";
+  import Section from "./components/Section.svelte";
 
   import {
     sleepTotal,
@@ -24,6 +26,7 @@
     essentialsPercentage,
     luxuriesPercentage,
   } from "./store";
+  import { bind } from "svelte/internal";
 
   // export let styles;
   $: chartData = [
@@ -35,6 +38,7 @@
     $luxuriesPercentage,
   ];
 
+  let showChart = false;
 
   let chartConfig = {
     type: "pie",
@@ -53,12 +57,12 @@
           // data: [1,1,1,1,1,1],
           data: chartData,
           backgroundColor: [
-            "#991b1b",
-            "#3f6212",
-            "#115e59",
-            "#5b21b6",
-            "#9a3412",
-            "#1e293b",
+            "#B45309",
+            "#1D4ED8",
+            "#0F766E",
+            "#374151",
+            "#44403C",
+            "#A16207",
           ],
           // borderColor: [
           //   "rgba(255, 99, 132, 1)",
@@ -81,48 +85,131 @@
     //   },
   };
 
-setInterval(() => {
-  chartConfig.data.datasets[0].data = chartData
-}, 1000);
-
-
+  setInterval(() => {
+    chartConfig.data.datasets[0].data = chartData;
+  }, 1000);
 </script>
 
-<header class="font-sans w-full sticky top-0 py-4 px-6 bg-slate-900/95">
-  <div class="bg-slate-800/95 h-full flex justify-between text-center p-4">
-    <div>
-      <h1 class="text-emerald-300 text-5xl">luwa pack app</h1>
-      <h4 class="text-slate-500 text-lg pt-4">
-        simple app to watch those grams
-      </h4>
-    </div>
-    <div class="flex w-full justify-around items-center">
-      <div class="w-1/3 text-3xl text-white">
-        pack weight {$packTotal} grams
-      </div>
-      <!-- chart here -->
-      <!-- <div class="w-1/3">
-        <Chart />
-      </div> -->
+<main
+  class="font-sans relative bg-slate-900 text-slate-200 h-screen w-full overflow-y-scroll"
+>
+  <header class="font-sans w-full fixed top-0 py-4 px-2 bg-slate-900/95">
+    <div class="bg-slate-800/95 p-4">
+      <div
+        class="text-cyan-300 text-5xl py-2 flex justify-around items-center cursor-pointer"
+        on:click={() => (showChart = !showChart)}
+      >
+        <h1>luwa pack app</h1>
 
-      <div class="w-1/3 p-4">
-        <canvas use:renderChart={chartConfig} />
+        {#if !showChart}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
+            />
+          </svg>
+        {:else}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 11l7-7 7 7M5 19l7-7 7 7"
+            />
+          </svg>
+        {/if}
+        <h1 class="text-3xl">
+          current pack : {$packTotal} grams
+        </h1>
       </div>
-    </div>
-  </div>
-</header>
 
-<main class="font-sans">
-  <section class="flex flex-col overflow-auto pt-">
+      {#if showChart}
+        <div class="flex w-full justify-around items-center">
+          <table class="w-1/3 text-center text-slate-300">
+            <thead>
+              <tr>
+                <th>section</th>
+                <th>weight</th>
+                <th>% of pack</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-amber-700">
+                <td>essentials</td>
+                <td>{$essentialsTotal} gm</td>
+                <td>{$essentialsPercentage} %</td>
+              </tr>
+              <tr class="bg-blue-700">
+                <td>sleep</td>
+                <td>{$sleepTotal} gm</td>
+                <td>{$sleepPercentage} %</td>
+                
+              </tr>
+              <tr class="bg-teal-700">
+                <td>eat / drink</td>
+                <td>{$eatDrinkTotal} gm</td>
+                <td>{$eatDrinkPercentage} %</td>
+                
+                
+              </tr>
+              <tr class="bg-gray-700">
+                <td>clothing</td>
+                <td>{$clothingTotal} gm</td>
+                <td>{$clothingPercentage} %</td>
+                
+              </tr>
+              <tr class="bg-stone-700">
+                <td>shelter</td>
+                <td>{$shelterTotal} gm</td>
+                <td>{$shelterPercentage} %</td>
+              </tr>
+              <tr class="bg-yellow-700">
+                <td>luxuries</td>
+                <td>{$luxuriesTotal} gm</td>
+                <td>{$luxuriesPercentage} %</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- chart here -->
+          <div class="w-1/3 p-4">
+            <canvas use:renderChart={chartConfig} />
+          </div>
+        </div>
+      {/if}
+    </div>
+  </header>
+
+  <section class="flex flex-col pt-48 px-4 py-6 overflow-auto">
     <div class="flex flex-col">
-      <Sleep
+      <Essentials />
+      <Sleep />
+      <EatDrink />
+      <Clothing />
+      <Shelter />
+      
+      <Luxuries />
+      <!-- <Sleep
         formStyles="flex flex-col bg-red-900 text-white text-right"
         h2Styles="text-5xl bg-red-800 border-2 border-red-900 px-6 py-4"
         inputContainerStyles="flex flex-col py-2 px-4 items-end"
         singleInputContainerStyles="flex justify-center items-center py-2 w-1/2"
         labelStyles="w-2/4 text-lg font-bold pr-2"
         inputStyles="w-1/4 text-slate-700 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none "
-        buttonStyles="px-6 h-12 rounded m-auto uppercase font-semibold tracking-wider border-2 border-red-900 bg-red-100 text-red-900 my-4 mx-2 hover:bg-red-300"
+        buttonStyles="px-6 h-12 rounded w-1/2 self-end uppercase font-semibold tracking-wider border-2 border-red-900 bg-red-100 text-red-900 my-4 mx-2 hover:bg-red-300"
       />
       <EatDrink
         formStyles="flex flex-col bg-lime-900 text-white text-right"
@@ -168,7 +255,7 @@ setInterval(() => {
         labelStyles="w-2/4 text-lg font-bold pr-2"
         inputStyles="w-1/4 text-slate-700 shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none "
         buttonStyles="px-6 h-12 rounded m-auto uppercase font-semibold tracking-wider border-2 border-slate-900 bg-slate-100 text-slate-900 my-4 mx-2 hover:bg-slate-300"
-      />
+      /> -->
     </div>
   </section>
   <Footer />
