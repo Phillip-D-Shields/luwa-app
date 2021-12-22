@@ -35,23 +35,23 @@ export const packTotal = derived(
 );
 
 export const sleepPercentage = derived(
-  [packTotal, sleepTotal], ([$packTotal, $sleepTotal]) => ($sleepTotal / $packTotal) * 100
-)
+  [packTotal, sleepTotal], ([$packTotal, $sleepTotal]) => (($sleepTotal / $packTotal) * 100
+).toFixed(2))
 export const eatDrinkPercentage = derived(
-  [packTotal, eatDrinkTotal], ([$packTotal, $eatDrinkTotal]) => ($eatDrinkTotal / $packTotal) * 100
-)
+  [packTotal, eatDrinkTotal], ([$packTotal, $eatDrinkTotal]) => (($eatDrinkTotal / $packTotal) * 100
+).toFixed(2))
 export const clothingPercentage = derived(
-  [packTotal, clothingTotal], ([$packTotal, $clothingTotal]) => ($clothingTotal / $packTotal) * 100
-)
+  [packTotal, clothingTotal], ([$packTotal, $clothingTotal]) => (($clothingTotal / $packTotal) * 100
+).toFixed(2))
 export const shelterPercentage = derived(
-  [packTotal, shelterTotal], ([$packTotal, $shelterTotal]) => ($shelterTotal / $packTotal) * 100
-)
+  [packTotal, shelterTotal], ([$packTotal, $shelterTotal]) => (($shelterTotal / $packTotal) * 100
+).toFixed(2))
 export const essentialsPercentage = derived(
-  [packTotal, essentialsTotal], ([$packTotal, $essentialsTotal]) => ($essentialsTotal / $packTotal) * 100
-)
+  [packTotal, essentialsTotal], ([$packTotal, $essentialsTotal]) => (($essentialsTotal / $packTotal) * 100
+).toFixed(2))
 export const luxuriesPercentage = derived(
-  [packTotal, luxuriesTotal], ([$packTotal, $luxuriesTotal]) => ($luxuriesTotal / $packTotal) * 100
-)
+  [packTotal, luxuriesTotal], ([$packTotal, $luxuriesTotal]) => (($luxuriesTotal / $packTotal) * 100
+).toFixed(2))
 
 
 // TODO : derived store to show percentages used for bargraph

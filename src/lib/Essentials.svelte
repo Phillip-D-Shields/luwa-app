@@ -20,10 +20,10 @@
 
 <Section
   updateStore={() => updateEssentialsStore()}
-  formStyles="bg-amber-900"
-  titleStyles="bg-amber-700 hover:bg-amber-800 hover:text-slate-700"
+  formStyles="bg-red-900"
+  titleStyles="bg-red-700 hover:bg-red-800 hover:text-slate-700"
   sectionTitle="essentials"
-  buttonStyles="bg-amber-700 hover:bg-amber-800 hover:text-slate-700"
+  buttonStyles="bg-red-700 hover:bg-red-800 hover:text-slate-700"
   totalWeight={totalWeight}
 >
 <ItemInput bind:value={pack} item={pack} itemText="pack with rain fly" />
