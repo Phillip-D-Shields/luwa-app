@@ -19,9 +19,9 @@
 <Section
   updateStore={() => updateSleepStore()}
   formStyles="bg-blue-900"
-  titleStyles="bg-blue-700 hover:bg-blue-800 hover:text-slate-700"
+  titleStyles="bg-blue-700 hover:bg-blue-800"
   sectionTitle="sleep"
-  buttonStyles="bg-blue-700 hover:bg-blue-800 hover:text-slate-700"
+  buttonStyles="bg-blue-700 hover:bg-blue-800"
   totalWeight={sleepItemsTotal}
 >
   <ItemInput bind:value={sleepBag} item={sleepBag} itemText="sleeping bag" />

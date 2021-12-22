@@ -29,9 +29,9 @@
 <Section
   updateStore={() => updateEatDrinkStore()}
   formStyles="bg-teal-900"
-  titleStyles="bg-teal-700 hover:bg-teal-800 hover:text-slate-700"
+  titleStyles="bg-teal-700 hover:bg-teal-800"
   sectionTitle="eat and drink"
-  buttonStyles="bg-teal-700 hover:bg-teal-800 hover:text-slate-700"
+  buttonStyles="bg-teal-700 hover:bg-teal-800"
   totalWeight={total}
 >
   <ItemInput bind:value={fuel} item={fuel} itemText="fuel" />

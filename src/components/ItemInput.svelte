@@ -9,7 +9,7 @@
   <input
     id={item}
     type="number"
-    class="w-1/12 text-slate-700 shadow appearance-none border rounded py-2 px-3 leading-tight focus:outline-none "
+    class="w-1/3 text-slate-700 shadow appearance-none border rounded py-2 px-3 leading-tight focus:outline-none "
     bind:value
   />
 </div>

@@ -1,5 +1,6 @@
 import { derived, writable } from "svelte/store";
 
+// section totals
 export const sleepTotal = writable(0);
 export const eatDrinkTotal = writable(0);
 export const clothingTotal = writable(0);
@@ -7,8 +8,10 @@ export const shelterTotal = writable(0);
 export const essentialsTotal = writable(0);
 export const luxuriesTotal = writable(0);
 
+export const packInstances = writable([]);
 
-// ! derived can be used to sum and average, document has good examples
+
+// total pack weight
 export const packTotal = derived(
   [
     sleepTotal,
@@ -34,6 +37,7 @@ export const packTotal = derived(
     $luxuriesTotal
 );
 
+// section precentages
 export const sleepPercentage = derived(
   [packTotal, sleepTotal], ([$packTotal, $sleepTotal]) => (($sleepTotal / $packTotal) * 100
 ).toFixed(2))
@@ -52,6 +56,3 @@ export const essentialsPercentage = derived(
 export const luxuriesPercentage = derived(
   [packTotal, luxuriesTotal], ([$packTotal, $luxuriesTotal]) => (($luxuriesTotal / $packTotal) * 100
 ).toFixed(2))
-
-
-// TODO : derived store to show percentages used for bargraph
