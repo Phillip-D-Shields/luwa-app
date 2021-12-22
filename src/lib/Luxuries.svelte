@@ -18,9 +18,9 @@
 <Section
   updateStore={() => updateLuxuriesStore()}
   formStyles="bg-yellow-900"
-  titleStyles="bg-yellow-700 hover:bg-yellow-800 hover:text-slate-700"
+  titleStyles="bg-yellow-700 hover:bg-yellow-800"
   sectionTitle="luxuries"
-  buttonStyles="bg-yellow-700 hover:bg-yellow-800 hover:text-slate-700"
+  buttonStyles="bg-yellow-700 hover:bg-yellow-800"
   totalWeight={totalWeight}
 >
 <ItemInput bind:value={luxury00} item={luxury00} itemText="first luxury" />

@@ -20,9 +20,9 @@
 <Section
   updateStore={() => updateClothingStore()}
   formStyles="bg-gray-900"
-  titleStyles="bg-gray-700 hover:bg-gray-800 hover:text-slate-700"
+  titleStyles="bg-gray-700 hover:bg-gray-800"
   sectionTitle="clothing"
-  buttonStyles="bg-gray-700 hover:bg-gray-800 hover:text-slate-700"
+  buttonStyles="bg-gray-700 hover:bg-gray-800"
   totalWeight={totalWeight}
 >
   <ItemInput bind:value={baselayers} item={baselayers} itemText="base layers" />

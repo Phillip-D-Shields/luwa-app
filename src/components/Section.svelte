@@ -14,7 +14,7 @@
   class="text-right flex flex-col cursor-pointer {formStyles}"
 >
   <h2
-    class="text-3xl border-3 px-6 py-4 text-slate-900 {titleStyles}"
+    class="text-3xl border-3 px-6 py-4 text-slate-900 hover:text-slate-300 {titleStyles}"
     on:click={() => {
       isOpen = !isOpen;
     }}
@@ -27,7 +27,7 @@
       <slot />
     </div>
     <button
-      class="px-6 h-12 rounded w-1/2 self-end uppercase font-semibold tracking-wider my-6 mx-2 text-slate-900 {buttonStyles}"
+      class="px-6 h-12 rounded w-1/2 self-end uppercase font-semibold tracking-wider my-6 mx-2 text-slate-900 hover:text-slate-300 {buttonStyles}"
       type="submit">add {totalWeight} grams to pack</button
     >
   {/if}

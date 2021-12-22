@@ -18,9 +18,9 @@
 <Section
   updateStore={() => updateShelterStore()}
   formStyles="bg-stone-900"
-  titleStyles="bg-stone-700 hover:bg-stone-800 hover:text-slate-700"
+  titleStyles="bg-stone-700 hover:bg-stone-800"
   sectionTitle="shelter"
-  buttonStyles="bg-stone-700 hover:bg-stone-800 hover:text-slate-700"
+  buttonStyles="bg-stone-700 hover:bg-stone-800"
   totalWeight={totalWeight}
 >
   <ItemInput bind:value={tent} item={tent} itemText="tent" />
