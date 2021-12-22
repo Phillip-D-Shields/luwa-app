@@ -26,7 +26,6 @@
     essentialsPercentage,
     luxuriesPercentage,
   } from "./store";
-  import { bind } from "svelte/internal";
 
   // export let styles;
   $: chartData = [
@@ -57,12 +56,12 @@
           // data: [1,1,1,1,1,1],
           data: chartData,
           backgroundColor: [
-            "#B45309",
+            "#b91c1c",
             "#1D4ED8",
             "#0F766E",
             "#374151",
             "#44403C",
-            "#A16207",
+            "#a16207",
           ],
           // borderColor: [
           //   "rgba(255, 99, 132, 1)",
@@ -148,7 +147,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="bg-amber-700">
+              <tr class="bg-red-700">
                 <td>essentials</td>
                 <td>{$essentialsTotal} gm</td>
                 <td>{$essentialsPercentage} %</td>
