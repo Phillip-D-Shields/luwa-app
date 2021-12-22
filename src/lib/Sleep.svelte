@@ -1,72 +1,35 @@
 <script>
+  import Section from '../components/Section.svelte'
+  import ItemInput from '../components/ItemInput.svelte';
   import { sleepTotal } from "../store";
+  // sleep data
+  let sleepBag = 0;
+  let sleepPad = 0;
+  let sleepLiner = 0;
+  let sleepPillow = 0;
 
-  export let formStyles;
-  export let h2Styles;
-  export let inputContainerStyles;
-  export let singleInputContainerStyles;
-  export let labelStyles;
-  export let inputStyles;
-  export let buttonStyles;
-
-  let isOpen = true;
-
-  let bag = 0;
-  let pad = 0;
-  let liner = 0;
-  let pillow = 0;
-
-  $: totalWeight = bag + pad + liner + pillow;
+  $: sleepItemsTotal = sleepBag + sleepPad + sleepLiner + sleepPillow;
 
   function updateSleepStore() {
-    sleepTotal.set(totalWeight);
+    sleepTotal.set(sleepItemsTotal);
   }
 </script>
 
-<form on:submit|preventDefault={updateSleepStore} class={formStyles}>
-  <h2
-    class={h2Styles}
-    on:click={() => {
-      isOpen = !isOpen;
-    }}
-  >
-    sleep
-  </h2>
-
-  {#if isOpen}
-    <div class={inputContainerStyles}>
-      <div class={singleInputContainerStyles}>
-        <label for="bag" class={labelStyles}
-          ><span class="normal gray">sleeping</span> bag:
-        </label>
-        <input id="bag" type="number" bind:value={bag} class={inputStyles} />
-      </div>
-      <div class={singleInputContainerStyles}>
-        <label for="pad" class={labelStyles}>pad :</label>
-        <input id="pad" type="number" bind:value={pad} class={inputStyles} />
-      </div>
-      <div class={singleInputContainerStyles}>
-        <label for="liner" class={labelStyles}>liner :</label>
-        <input
-          id="liner"
-          type="number"
-          bind:value={liner}
-          class={inputStyles}
-          placeholder=false
-        />
-      </div>
-      <div class={singleInputContainerStyles}>
-        <label for="pillow" class={labelStyles}>pillow :</label>
-        <input
-          id="pillow"
-          type="number"
-          bind:value={pillow}
-          class={inputStyles}
-        />
-      </div>
-    </div>
-    <button class={buttonStyles} type="submit"
-      >update pack ( + {totalWeight} grams)</button
-    >
-  {/if}
-</form>
+<!-- sleep section -->
+<Section
+  updateStore={() => updateSleepStore()}
+  formStyles="bg-blue-900"
+  titleStyles="bg-blue-700 hover:bg-blue-800 hover:text-slate-700"
+  sectionTitle="sleep"
+  buttonStyles="bg-blue-700 hover:bg-blue-800 hover:text-slate-700"
+  totalWeight={sleepItemsTotal}
+>
+  <ItemInput bind:value={sleepBag} item={sleepBag} itemText="sleeping bag" />
+  <ItemInput bind:value={sleepPad} item={sleepPad} itemText="sleeping pad" />
+  <ItemInput
+    bind:value={sleepLiner}
+    item={sleepLiner}
+    itemText="sleeping bag liner"
+  />
+  <ItemInput bind:value={sleepPillow} item={sleepPillow} itemText="pillow" />
+</Section>

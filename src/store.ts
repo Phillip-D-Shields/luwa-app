@@ -7,6 +7,7 @@ export const shelterTotal = writable(0);
 export const essentialsTotal = writable(0);
 export const luxuriesTotal = writable(0);
 
+
 // ! derived can be used to sum and average, document has good examples
 export const packTotal = derived(
   [
